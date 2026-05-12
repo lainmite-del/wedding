@@ -1,9 +1,1389 @@
-<form
-  class="reply-form"
-  id="replyForm"
-  action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse"
-  method="POST"
-  accept-charset="UTF-8"
-  target="hidden_iframe"
-  autocomplete="off"
->
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>紹安SHAO AN &amp; 瓊萱CHIUNG HSUAN Wedding Invitation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sun: #d4a373;
+      --sage: #8da399;
+      --cream: #fbf7f0;
+      --ivory: #fffdf8;
+      --ink: #3f3832;
+      --muted: #86796d;
+      --line: rgba(212, 163, 115, 0.34);
+      --glass: rgba(255, 253, 248, 0.72);
+      --soft-shadow: 0 24px 70px rgba(63, 56, 50, 0.13);
+      --card-shadow: 0 14px 42px rgba(141, 103, 72, 0.13);
+      --radius-lg: 32px;
+      --radius-md: 22px;
+      --radius-sm: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 8%, rgba(212, 163, 115, 0.18), transparent 32%),
+        radial-gradient(circle at 86% 18%, rgba(141, 163, 153, 0.20), transparent 30%),
+        linear-gradient(180deg, #fffdf8 0%, #fbf7f0 46%, #f5eee4 100%);
+      font-family: "Noto Serif TC", serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.34;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.55) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.55) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, transparent, black 18%, black 76%, transparent);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .no-wrap {
+      display: inline-block;
+      max-width: 100%;
+      white-space: nowrap;
+      vertical-align: bottom;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .no-wrap::-webkit-scrollbar {
+      display: none;
+    }
+
+    .site-nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      width: min(1080px, calc(100% - 28px));
+      padding: 12px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.58);
+      border-radius: 999px;
+      background: var(--glass);
+      box-shadow: 0 12px 36px rgba(63, 56, 50, 0.12);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .nav-brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(10px, 3vw, 30px);
+      font-size: 0.92rem;
+      letter-spacing: 0.14em;
+      color: rgba(63, 56, 50, 0.78);
+      white-space: nowrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: var(--sun);
+      transform: translateX(-50%);
+      transition: width 0.28s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 118px 20px 64px;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(212, 163, 115, 0.20), transparent 34%),
+        radial-gradient(circle at 82% 22%, rgba(141, 163, 153, 0.22), transparent 32%),
+        linear-gradient(180deg, #fffdf8 0%, #fbf7f0 54%, #f5eee4 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.42) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.42) 1px, transparent 1px);
+      background-size: 46px 46px;
+      opacity: 0.34;
+      z-index: -1;
+    }
+
+    .hero-panel {
+      width: min(980px, 100%);
+      margin: auto;
+      padding: clamp(18px, 4vw, 34px);
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.68);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 253, 248, 0.70);
+      box-shadow: 0 28px 90px rgba(45, 35, 29, 0.14);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .hero-photo {
+      position: relative;
+      width: 100%;
+      margin: 0 auto clamp(28px, 4vw, 42px);
+      border-radius: clamp(24px, 4vw, 34px);
+      overflow: hidden;
+      box-shadow:
+        0 28px 70px rgba(63, 56, 50, 0.18),
+        inset 0 1px 0 rgba(255,255,255,0.72);
+      border: 1px solid rgba(255, 255, 255, 0.74);
+      background: #fffdf8;
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, transparent 62%, rgba(63, 56, 50, 0.10)),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.18), transparent 38%);
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--sun);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-weight: 500;
+      color: var(--ink);
+      text-shadow: 0 12px 34px rgba(212, 163, 115, 0.14);
+    }
+
+    .hero h1.name-one-line {
+      width: 100%;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      white-space: nowrap;
+      overflow: visible;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(1rem, 4.2vw, 4.8rem);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .couple-names.name-one-line {
+      white-space: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .couple-names.name-one-line::-webkit-scrollbar {
+      display: none;
+    }
+
+    .soul-line {
+      width: fit-content;
+      max-width: 100%;
+      margin: 28px auto 0;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: rgba(212, 163, 115, 0.13);
+      color: var(--ink);
+      letter-spacing: 0.16em;
+      box-shadow: 0 12px 34px rgba(63, 56, 50, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .wedding-date {
+      margin: 24px 0 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      letter-spacing: 0.16em;
+      color: var(--sage);
+    }
+
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      min-width: 150px;
+      padding: 12px 20px;
+      border: 1px solid rgba(212, 163, 115, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, 0.76);
+      color: var(--ink);
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      box-shadow: 0 14px 34px rgba(63, 56, 50, 0.10);
+      transition: transform 0.24s ease, background 0.24s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 253, 248, 0.96);
+    }
+
+    .btn.primary {
+      background: rgba(212, 163, 115, 0.88);
+      color: #fffdf8;
+      border-color: rgba(212, 163, 115, 0.24);
+    }
+
+    .section {
+      width: min(1080px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 96px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .section-heading .en {
+      display: block;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--sun);
+    }
+
+    .section-heading h2 {
+      margin: 8px 0 0;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .about-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 58px);
+      border: 1px solid rgba(212, 163, 115, 0.24);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 253, 248, 0.76);
+      box-shadow: var(--soft-shadow);
+      text-align: center;
+    }
+
+    .about-card::before,
+    .about-card::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      filter: blur(8px);
+      opacity: 0.26;
+      pointer-events: none;
+    }
+
+    .about-card::before {
+      top: -88px;
+      left: -88px;
+      background: var(--sun);
+    }
+
+    .about-card::after {
+      right: -92px;
+      bottom: -92px;
+      background: var(--sage);
+    }
+
+    .couple-names {
+      position: relative;
+      margin: 0 0 20px;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(2.1rem, 7vw, 5rem);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      z-index: 1;
+    }
+
+    .couple-names.name-one-line {
+      font-size: clamp(2.4rem, 9vw, 5.2rem);
+      line-height: 1.05;
+      letter-spacing: 0.08em;
+    }
+
+    .about-card p {
+      position: relative;
+      width: min(720px, 100%);
+      margin: 0 auto;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      z-index: 1;
+    }
+
+    .countdown-wrap {
+      margin-top: 42px;
+    }
+
+    .countdown-title {
+      margin: 0 0 18px;
+      text-align: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1rem;
+      letter-spacing: 0.26em;
+      color: var(--sage);
+      text-transform: uppercase;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      gap: clamp(12px, 2.2vw, 22px);
+    }
+
+    .time-card {
+      position: relative;
+      min-height: 128px;
+      padding: 22px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.74);
+      border-radius: 28px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.95), rgba(255,253,248,0.78));
+      box-shadow:
+        0 20px 46px rgba(80, 67, 54, 0.12),
+        inset 0 1px 0 rgba(255,255,255,0.92);
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 14px;
+      overflow: hidden;
+    }
+
+    .time-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 22px;
+      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.95), transparent 58%);
+      pointer-events: none;
+    }
+
+    .time-card .num {
+      position: relative;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.35rem, 5vw, 4.2rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-shadow: 0 0 22px rgba(212, 163, 115, 0.16);
+      z-index: 1;
+    }
+
+    .time-card .divider {
+      position: relative;
+      width: 1px;
+      height: 52px;
+      background: linear-gradient(to bottom, transparent, rgba(212, 163, 115, 0.78), transparent);
+      z-index: 1;
+    }
+
+    .time-card .unit {
+      position: relative;
+      writing-mode: vertical-rl;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      font-size: 0.86rem;
+      z-index: 1;
+    }
+
+    .details-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .v-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+      padding: clamp(26px, 4vw, 42px);
+      border: 1px solid rgba(212, 163, 115, 0.22);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 253, 248, 0.82);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+    }
+
+    .v-card::before {
+      content: "";
+      position: absolute;
+      top: 28px;
+      left: 0;
+      width: 5px;
+      height: calc(100% - 56px);
+      border-radius: 999px;
+      background: linear-gradient(to bottom, var(--sun), var(--sage));
+    }
+
+    .v-card .kicker {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--sun);
+    }
+
+    .v-card h3 {
+      margin: 0;
+      font-size: clamp(1.6rem, 4vw, 2.65rem);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      color: var(--muted);
+    }
+
+    .info-row strong {
+      color: var(--ink);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .transport {
+      margin-top: 24px;
+      border: 1px solid rgba(141, 163, 153, 0.30);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 253, 248, 0.72);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+    }
+
+    .transport summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 22px clamp(22px, 4vw, 36px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: var(--ink);
+      letter-spacing: 0.12em;
+    }
+
+    .transport summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .transport summary span {
+      font-weight: 600;
+      font-size: 1.12rem;
+    }
+
+    .transport summary small {
+      color: var(--sage);
+      white-space: nowrap;
+    }
+
+    .transport summary::after {
+      content: "+";
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(141, 163, 153, 0.16);
+      color: var(--sage);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+      line-height: 1;
+      transition: transform 0.24s ease;
+      flex: 0 0 auto;
+    }
+
+    .transport[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .transport-body {
+      padding: 0 clamp(22px, 4vw, 36px) 30px;
+      color: var(--muted);
+    }
+
+    .transport-body p {
+      margin: 12px 0;
+    }
+
+    .transport-body strong {
+      color: var(--ink);
+      margin-right: 10px;
+      letter-spacing: 0.08em;
+    }
+
+    .reply-shell {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .reply-note {
+      padding: clamp(28px, 4vw, 44px);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(145deg, rgba(212, 163, 115, 0.16), rgba(141, 163, 153, 0.16)),
+        rgba(255, 253, 248, 0.72);
+      border: 1px solid rgba(255,255,255,0.58);
+      box-shadow: var(--card-shadow);
+    }
+
+    .reply-note h3 {
+      margin: 0 0 16px;
+      font-size: clamp(1.55rem, 3vw, 2.3rem);
+      letter-spacing: 0.1em;
+    }
+
+    .reply-note p {
+      margin: 0;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .reply-form {
+      padding: clamp(26px, 4vw, 42px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(212, 163, 115, 0.22);
+      background: rgba(255, 253, 248, 0.88);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.94rem;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    label span {
+      margin-left: 8px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.92rem;
+      letter-spacing: 0.18em;
+      color: var(--sun);
+    }
+
+    .field-note {
+      margin: -2px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.8;
+      letter-spacing: 0.04em;
+    }
+
+    .field-note .note-line {
+      display: block;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(141, 163, 153, 0.34);
+      border-radius: 18px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--ink);
+      font-family: "Noto Serif TC", serif;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(212, 163, 115, 0.72);
+      box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.14);
+      background: #fff;
+    }
+
+    select {
+      appearance: none;
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--sage) 50%),
+        linear-gradient(135deg, var(--sage) 50%, transparent 50%);
+      background-position:
+        calc(100% - 22px) 52%,
+        calc(100% - 16px) 52%;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 42px;
+    }
+
+    textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+
+    .radio-group {
+      display: grid;
+      gap: 12px;
+      padding: 4px 0 2px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      color: var(--ink);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+    }
+
+    .radio-option input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      margin: 4px 0 0;
+      padding: 0;
+      border-radius: 50%;
+      accent-color: var(--sun);
+      cursor: pointer;
+      box-shadow: none;
+    }
+
+    .radio-option input[type="radio"]:focus {
+      box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.14);
+    }
+
+    .radio-option .option-text {
+      margin-left: 0;
+      font-family: "Noto Serif TC", serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+
+    .submit-btn {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      margin-top: 8px;
+      padding: 15px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--sun), #c89366);
+      color: #fffdf8;
+      font-family: "Noto Serif TC", serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      box-shadow: 0 18px 38px rgba(212, 163, 115, 0.28);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 48px rgba(212, 163, 115, 0.34);
+    }
+
+    .form-notice {
+      display: none;
+      margin-top: 16px;
+      padding: 13px 16px;
+      border-radius: 16px;
+      background: rgba(141, 163, 153, 0.14);
+      color: var(--ink);
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    .form-notice.is-visible {
+      display: block;
+    }
+
+    .site-footer {
+      padding: 40px 18px 54px;
+      text-align: center;
+      color: var(--muted);
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .site-footer::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (max-width: 860px) {
+      .site-nav {
+        top: 10px;
+        width: calc(100% - 20px);
+        padding: 10px 14px;
+      }
+
+      .nav-brand {
+        font-size: 1.08rem;
+        letter-spacing: 0.12em;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+      }
+
+      .hero {
+        padding: 102px 14px 48px;
+      }
+
+      .hero-panel {
+        padding: 18px;
+        border-radius: 26px;
+      }
+
+      .soul-line {
+        border-radius: 24px;
+        letter-spacing: 0.08em;
+        padding: 10px 14px;
+      }
+
+      .section {
+        width: min(100% - 26px, 1080px);
+        padding: 76px 0;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .time-card {
+        min-height: 112px;
+        padding: 18px 14px;
+        border-radius: 24px;
+        gap: 10px;
+      }
+
+      .time-card .divider {
+        height: 44px;
+      }
+
+      .info-row {
+        grid-template-columns: 76px minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .reply-shell {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .site-nav {
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-links {
+        gap: 9px;
+      }
+
+      .nav-links a {
+        font-size: 0.72rem;
+      }
+
+      .hero h1.name-one-line {
+        font-size: clamp(0.82rem, 3.95vw, 1.18rem);
+        letter-spacing: 0;
+      }
+
+      .couple-names.name-one-line {
+        font-size: clamp(2.1rem, 12vw, 3.2rem);
+        letter-spacing: 0.06em;
+      }
+
+      .countdown {
+        gap: 10px;
+      }
+
+      .time-card {
+        grid-template-columns: 1fr auto auto;
+        min-height: 96px;
+        padding: 16px 11px;
+      }
+
+      .time-card .num {
+        font-size: clamp(2rem, 11vw, 3.1rem);
+      }
+
+      .time-card .unit {
+        font-size: 0.76rem;
+      }
+
+      .transport summary {
+        padding: 20px 18px;
+      }
+
+      .transport-body {
+        padding: 0 18px 26px;
+      }
+
+      input,
+      select,
+      textarea {
+        font-size: 16px;
+      }
+
+      .radio-option .option-text {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="site-nav" aria-label="主要導覽">
+    <a class="nav-brand" href="#top">S &amp; C</a>
+
+    <div class="nav-links">
+      <a href="#about">關於我們</a>
+      <a href="#details">婚禮詳情</a>
+      <a href="#reply">出席回函</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-panel">
+      <figure class="hero-photo">
+        <img
+          src="https://i.postimg.cc/WpDN6JQn/20260313-ARC-47.jpg"
+          alt="紹安SHAO AN 與 瓊萱CHIUNG HSUAN 婚禮邀請主視覺照片"
+        />
+      </figure>
+
+      <p class="eyebrow">Save The Date</p>
+
+      <h1 class="name-one-line">紹安SHAO AN &amp; 瓊萱CHIUNG HSUAN</h1>
+
+      <p class="soul-line">瓊心如萱，紹承此生安暖。</p>
+
+      <p class="wedding-date">2026.11.22 · SUN · 10:30 AM</p>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="#details">查看婚禮資訊</a>
+        <a class="btn" href="#reply">填寫出席回函</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="about">
+      <div class="section-heading">
+        <span class="en">Our Story</span>
+        <h2>關於我們</h2>
+      </div>
+
+      <div class="about-card">
+        <h2 class="couple-names name-one-line">S.A &amp; C.H</h2>
+
+        <p>
+          從相遇到相守，我們將在溫柔的秋日午後，與最珍愛的親友們分享此生重要的約定。
+          誠摯邀請您一同見證，讓祝福在這一天成為最美的風景。
+        </p>
+
+        <div class="countdown-wrap" aria-label="婚禮倒數計時">
+          <p class="countdown-title">Countdown To The Ceremony</p>
+
+          <div class="countdown">
+            <div class="time-card">
+              <span class="num" id="days">000</span>
+              <span class="divider" aria-hidden="true"></span>
+              <span class="unit">天</span>
+            </div>
+
+            <div class="time-card">
+              <span class="num" id="hours">00</span>
+              <span class="divider" aria-hidden="true"></span>
+              <span class="unit">時</span>
+            </div>
+
+            <div class="time-card">
+              <span class="num" id="minutes">00</span>
+              <span class="divider" aria-hidden="true"></span>
+              <span class="unit">分</span>
+            </div>
+
+            <div class="time-card">
+              <span class="num" id="seconds">00</span>
+              <span class="divider" aria-hidden="true"></span>
+              <span class="unit">秒</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="details">
+      <div class="section-heading">
+        <span class="en">Wedding Details</span>
+        <h2>婚禮詳情</h2>
+      </div>
+
+      <div class="details-grid">
+        <article class="v-card">
+          <p class="kicker">The Holy Ceremony</p>
+
+          <h3>證婚儀式資訊</h3>
+
+          <div class="info-list">
+            <div class="info-row">
+              <strong>日期</strong>
+              <span>2026.11.22（SUN）</span>
+            </div>
+
+            <div class="info-row">
+              <strong>地點</strong>
+              <span class="no-wrap">新莊典華 香草花園</span>
+            </div>
+
+            <div class="info-row">
+              <strong>時間</strong>
+              <span>10:00 入場｜10:30 典禮開始</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="v-card">
+          <p class="kicker">The Wedding Banquet</p>
+
+          <h3>婚禮午宴資訊</h3>
+
+          <div class="info-list">
+            <div class="info-row">
+              <strong>開席</strong>
+              <span>12:30 PM 準時開席</span>
+            </div>
+
+            <div class="info-row">
+              <strong>地點</strong>
+              <span class="no-wrap">新莊典華 法蘿廳</span>
+            </div>
+
+            <div class="info-row">
+              <strong>時間</strong>
+              <span>12:00 入席｜12:30 準時開席</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="v-card">
+          <p class="kicker">Dress Code</p>
+
+          <h3>暖陽莫蘭迪</h3>
+
+          <div class="info-list">
+            <div class="info-row">
+              <strong>建議</strong>
+              <span>
+                可選擇
+                <span class="no-wrap">粉嫩霧紫色</span>、
+                <span class="no-wrap">米杏奶茶色</span>、
+                <span class="no-wrap">橄欖綠</span>、
+                <span class="no-wrap">柔霧大地色</span>
+                等溫柔色系。
+              </span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <details class="transport">
+        <summary>
+          <span>交通指引</span>
+          <small>點擊展開</small>
+        </summary>
+
+        <div class="transport-body">
+          <p>
+            <strong>地址</strong>
+            <span class="no-wrap">新北市新莊區中央路469號</span>
+          </p>
+
+          <p>
+            <strong>捷運</strong>
+            <span class="no-wrap">機場捷運A4新莊副都心站2號出口</span>，步行約 3 分鐘。
+          </p>
+
+          <p>
+            <strong>停車</strong>
+            <span class="no-wrap">新莊典華B2停車場</span>，車位有限，建議提早出發。
+          </p>
+
+          <p>
+            <strong>公車</strong>
+            可於
+            <span class="no-wrap">捷運新莊副都心站（中央路）</span>、
+            <span class="no-wrap">行政院新莊聯合辦公大樓</span>、
+            <span class="no-wrap">中原路</span>
+            等站點下車。
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <section class="section" id="reply">
+      <div class="section-heading">
+        <span class="en">請回覆出席資訊</span>
+        <h2>出席回函</h2>
+      </div>
+
+      <div class="reply-shell">
+        <aside class="reply-note">
+          <h3>期待與您相見</h3>
+
+          <p>
+            為了讓我們妥善安排座位與餐點，敬請填寫以下回函。
+            您送出後，資料會透過隱藏式表單提交至新人準備的表單中。
+          </p>
+        </aside>
+
+        <form
+          class="reply-form"
+          id="replyForm"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse"
+          method="POST"
+          accept-charset="UTF-8"
+          target="hidden_iframe"
+          autocomplete="off"
+        >
+          <input type="hidden" name="fvv" value="1" />
+          <input type="hidden" name="pageHistory" value="0" />
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="guestName">姓名 <span>NAME</span></label>
+              <input
+                id="guestName"
+                name="entry.85964274"
+                type="text"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="relation">與新人關係 <span>RELATIONSHIP</span></label>
+              <select id="relation" name="entry.1703390441" required>
+                <option value="" selected disabled>請選擇</option>
+                <option value="男方家人親戚">男方家人親戚</option>
+                <option value="男方好友同學">男方好友同學</option>
+                <option value="男方同事長官">男方同事長官</option>
+                <option value="女方家人親戚">女方家人親戚</option>
+                <option value="女方好友同學">女方好友同學</option>
+                <option value="女方同事長官">女方同事長官</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>是否需要喜帖 <span>INVITATION</span></label>
+
+              <div class="radio-group">
+                <label class="radio-option" for="inviteEmail">
+                  <input
+                    id="inviteEmail"
+                    name="entry.2083343444"
+                    type="radio"
+                    value="需要，請寄電子喜帖給我(請填Email)"
+                    required
+                  />
+                  <span class="option-text">需要，請寄電子喜帖給我(請填Email)</span>
+                </label>
+
+                <label class="radio-option" for="invitePaper">
+                  <input
+                    id="invitePaper"
+                    name="entry.2083343444"
+                    type="radio"
+                    value="需要，請寄紙本喜帖給我(請填寄送地址)"
+                    required
+                  />
+                  <span class="option-text">需要，請寄紙本喜帖給我(請填寄送地址)</span>
+                </label>
+
+                <label class="radio-option" for="inviteNone">
+                  <input
+                    id="inviteNone"
+                    name="entry.2083343444"
+                    type="radio"
+                    value="不用唷，婚禮相關資訊我知道了(請填連絡電話)"
+                    required
+                  />
+                  <span class="option-text">不用唷，婚禮相關資訊我知道了(請填連絡電話)</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="ecardEmail">電子喜帖寄送 Email <span>EMAIL</span></label>
+
+              <p class="field-note">
+                <span class="note-line">一起愛護地球，喜帖會在婚禮前一個月寄出</span>
+              </p>
+
+              <input
+                id="ecardEmail"
+                name="entry.63781421"
+                type="email"
+                inputmode="email"
+              />
+            </div>
+
+            <div class="field">
+              <label for="paperAddress">紙本喜帖寄送地址 <span>ADDRESS</span></label>
+              <input
+                id="paperAddress"
+                name="entry.942165567"
+                type="text"
+              />
+            </div>
+
+            <div class="field">
+              <label for="phone">您的聯絡電話 <span>PHONE</span></label>
+              <input
+                id="phone"
+                name="entry.1825100098"
+                type="tel"
+                inputmode="tel"
+              />
+            </div>
+
+            <div class="field">
+              <label for="attendance">出席場次 <span>ATTENDANCE</span></label>
+              <select id="attendance" name="entry.2026048812" required>
+                <option value="" selected disabled>請選擇</option>
+                <option value="證婚儀式與婚禮午宴皆出席">證婚儀式與婚禮午宴皆出席</option>
+                <option value="僅參加證婚儀式">僅參加證婚儀式</option>
+                <option value="僅參加婚禮午宴">僅參加婚禮午宴</option>
+                <option value="無法出席">無法出席</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="guestCount">出席人數 <span>GUESTS</span></label>
+
+              <p class="field-note" id="guestCountNote">
+                <span class="note-line">*人數總計記得包括自己喔</span>
+                <span class="note-line">*因桌數座位有限我們希望參加的你/妳都是能見證我們幸福的重要貴賓，目前暫不開放幼兒孩童隨行，如有需求請另外洽詢我們喔，謝謝</span>
+              </p>
+
+              <input
+                id="guestCount"
+                name="entry.258761220"
+                type="number"
+                min="0"
+                max="10"
+                inputmode="numeric"
+                aria-describedby="guestCountNote"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="message">祝福的話 <span>MESSAGE</span></label>
+              <textarea
+                id="message"
+                name="entry.380019799"
+              ></textarea>
+            </div>
+
+            <button class="submit-btn" type="submit">送出回覆</button>
+
+            <div class="form-notice" id="formNotice" aria-live="polite"></div>
+          </div>
+        </form>
+
+        <iframe
+          title="Google 表單隱藏送出 iframe"
+          name="hidden_iframe"
+          id="hidden_iframe"
+          style="display:none;"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    紹安SHAO AN &amp; 瓊萱CHIUNG HSUAN · 2026.11.22
+  </footer>
+
+  <script>
+    const weddingTime = new Date("2026-11-22T10:30:00+08:00").getTime();
+
+    const countdownEls = {
+      days: document.getElementById("days"),
+      hours: document.getElementById("hours"),
+      minutes: document.getElementById("minutes"),
+      seconds: document.getElementById("seconds")
+    };
+
+    function pad(value, length = 2) {
+      return String(value).padStart(length, "0");
+    }
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = Math.max(weddingTime - now, 0);
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEls.days.textContent = pad(days, 3);
+      countdownEls.hours.textContent = pad(hours);
+      countdownEls.minutes.textContent = pad(minutes);
+      countdownEls.seconds.textContent = pad(seconds);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const replyForm = document.getElementById("replyForm");
+    const formNotice = document.getElementById("formNotice");
+    const hiddenIframe = document.getElementById("hidden_iframe");
+    let formSubmitted = false;
+
+    replyForm.addEventListener("submit", () => {
+      formSubmitted = true;
+      formNotice.textContent = "正在送出，請稍候。";
+      formNotice.dataset.submittedAt = String(Date.now());
+      formNotice.classList.add("is-visible");
+    });
+
+    hiddenIframe.addEventListener("load", () => {
+      if (!formSubmitted) return;
+
+      const submittedAt = Number(formNotice.dataset.submittedAt || 0);
+      const waitedLongEnough = Date.now() - submittedAt > 400;
+
+      if (!waitedLongEnough) return;
+
+      formNotice.textContent = "表單已送出。若資料未出現在 Google 表單後台，請檢查該表單題目是否仍使用相同 entry ID、選項文字是否完全一致，以及表單是否限制登入或停止收件。";
+      replyForm.reset();
+      formSubmitted = false;
+    });
+  </script>
+</body>
+</html>
