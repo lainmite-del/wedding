@@ -1165,8 +1165,9 @@
           id="replyForm"
           action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse?usp=pp_url"
           method="POST"
+          enctype="application/x-www-form-urlencoded"
           accept-charset="UTF-8"
-          target="hidden_iframe"
+          target="_blank"
           autocomplete="off"
         >
           <div class="form-grid">
@@ -1308,7 +1309,7 @@
             <button class="submit-btn" type="submit">送出回覆</button>
 
             <p class="field-note" style="text-align:center; margin-top: 10px;">
-              若送出後沒有看到成功訊息，可
+              送出後會開啟 Google 表單確認頁；若看到「您的回覆已記錄」，代表後台已收到。也可
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/viewform?usp=pp_url"
                 target="_blank"
@@ -1320,13 +1321,6 @@
             <div class="form-notice" id="formNotice" aria-live="polite"></div>
           </div>
         </form>
-
-        <iframe
-          title="hidden form submit"
-          name="hidden_iframe"
-          id="hidden_iframe"
-          style="display:none;"
-        ></iframe>
       </div>
     </section>
   </main>
@@ -1369,21 +1363,10 @@
 
     const replyForm = document.getElementById("replyForm");
     const formNotice = document.getElementById("formNotice");
-    const hiddenIframe = document.getElementById("hidden_iframe");
-    let formSubmitted = false;
 
     replyForm.addEventListener("submit", () => {
-      formSubmitted = true;
-      formNotice.textContent = "正在送出，請稍候。";
+      formNotice.textContent = "已開啟 Google 表單送出確認頁。若新分頁顯示「您的回覆已記錄」，代表後台已成功收到。";
       formNotice.classList.add("is-visible");
-    });
-
-    hiddenIframe.addEventListener("load", () => {
-      if (!formSubmitted) return;
-
-      formNotice.textContent = "已收到您的回覆，謝謝您的祝福。";
-      replyForm.reset();
-      formSubmitted = false;
     });
   </script>
 </body>
