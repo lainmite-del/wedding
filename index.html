@@ -1163,13 +1163,15 @@
         <form
           class="reply-form"
           id="replyForm"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse?usp=pp_url"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse"
           method="POST"
-          enctype="application/x-www-form-urlencoded"
           accept-charset="UTF-8"
-          target="_blank"
+          target="hidden_iframe"
           autocomplete="off"
         >
+          <input type="hidden" name="fvv" value="1" />
+          <input type="hidden" name="pageHistory" value="0" />
+
           <div class="form-grid">
             <div class="field">
               <label for="guestName">姓名 <span>NAME</span></label>
@@ -1308,19 +1310,16 @@
 
             <button class="submit-btn" type="submit">送出回覆</button>
 
-            <p class="field-note" style="text-align:center; margin-top: 10px;">
-              送出後會開啟 Google 表單確認頁；若看到「您的回覆已記錄」，代表後台已收到。也可
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/viewform?usp=pp_url"
-                target="_blank"
-                rel="noopener noreferrer"
-                style="color: var(--sun); text-decoration: underline; text-underline-offset: 4px;"
-              >直接開啟 Google 表單填寫</a>。
-            </p>
-
             <div class="form-notice" id="formNotice" aria-live="polite"></div>
           </div>
         </form>
+
+        <iframe
+          title="Google 表單隱藏送出 iframe"
+          name="hidden_iframe"
+          id="hidden_iframe"
+          style="display:none;"
+        ></iframe>
       </div>
     </section>
   </main>
@@ -1363,10 +1362,27 @@
 
     const replyForm = document.getElementById("replyForm");
     const formNotice = document.getElementById("formNotice");
+    const hiddenIframe = document.getElementById("hidden_iframe");
+    let formSubmitted = false;
 
     replyForm.addEventListener("submit", () => {
-      formNotice.textContent = "已開啟 Google 表單送出確認頁。若新分頁顯示「您的回覆已記錄」，代表後台已成功收到。";
+      formSubmitted = true;
+      formNotice.textContent = "正在送出，請稍候。";
+      formNotice.dataset.submittedAt = String(Date.now());
       formNotice.classList.add("is-visible");
+    });
+
+    hiddenIframe.addEventListener("load", () => {
+      if (!formSubmitted) return;
+
+      const submittedAt = Number(formNotice.dataset.submittedAt || 0);
+      const waitedLongEnough = Date.now() - submittedAt > 400;
+
+      if (!waitedLongEnough) return;
+
+      formNotice.textContent = "表單已送出。若資料未出現在 Google 表單後台，請檢查該表單題目是否仍使用相同 entry ID、選項文字是否完全一致，以及表單是否限制登入或停止收件。";
+      replyForm.reset();
+      formSubmitted = false;
     });
   </script>
 </body>
