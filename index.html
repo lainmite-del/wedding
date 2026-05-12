@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>SHAO AN &amp; CHIUNG HSUAN Wedding Invitation</title>
+  <title>紹安SHAO AN &amp; 瓊萱CHIUNG HSUAN Wedding Invitation</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -222,13 +222,35 @@
 
     .hero h1 {
       margin: 0;
-      font-family: "Cormorant Garamond", serif;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
       font-size: clamp(3rem, 10vw, 8.6rem);
       font-weight: 500;
       line-height: 0.92;
       letter-spacing: 0.03em;
       color: var(--ink);
       text-shadow: 0 12px 34px rgba(212, 163, 115, 0.14);
+    }
+
+    .hero h1.name-one-line,
+    .couple-names.name-one-line {
+      white-space: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .hero h1.name-one-line::-webkit-scrollbar,
+    .couple-names.name-one-line::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hero h1.name-one-line {
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(1.45rem, 5.6vw, 5.8rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: 0.02em;
     }
 
     .soul-line {
@@ -350,12 +372,18 @@
     .couple-names {
       position: relative;
       margin: 0 0 20px;
-      font-family: "Cormorant Garamond", serif;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
       font-size: clamp(2.1rem, 7vw, 5rem);
       font-weight: 500;
       letter-spacing: 0.06em;
       color: var(--ink);
       z-index: 1;
+    }
+
+    .couple-names.name-one-line {
+      font-size: clamp(2.4rem, 9vw, 5.2rem);
+      line-height: 1.05;
+      letter-spacing: 0.08em;
     }
 
     .about-card p {
@@ -734,8 +762,15 @@
       padding: 40px 18px 54px;
       text-align: center;
       color: var(--muted);
-      font-family: "Cormorant Garamond", serif;
-      letter-spacing: 0.14em;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .site-footer::-webkit-scrollbar {
+      display: none;
     }
 
     @media (max-width: 860px) {
@@ -815,8 +850,14 @@
         font-size: 0.72rem;
       }
 
-      .hero h1 {
-        font-size: clamp(3rem, 17vw, 5.4rem);
+      .hero h1.name-one-line {
+        font-size: clamp(1.16rem, 5.15vw, 1.65rem);
+        letter-spacing: 0.01em;
+      }
+
+      .couple-names.name-one-line {
+        font-size: clamp(2.1rem, 12vw, 3.2rem);
+        letter-spacing: 0.06em;
       }
 
       .countdown {
@@ -882,17 +923,13 @@
       <figure class="hero-photo">
         <img
           src="https://i.postimg.cc/WpDN6JQn/20260313-ARC-47.jpg"
-          alt="SHAO AN 與 CHIUNG HSUAN 婚禮邀請主視覺照片"
+          alt="紹安SHAO AN 與 瓊萱CHIUNG HSUAN 婚禮邀請主視覺照片"
         />
       </figure>
 
       <p class="eyebrow">Save The Date</p>
 
-      <h1>
-        SHAO AN<br>
-        &amp;<br>
-        CHIUNG HSUAN
-      </h1>
+      <h1 class="name-one-line">紹安SHAO AN &amp; 瓊萱CHIUNG HSUAN</h1>
 
       <p class="soul-line">瓊心如萱，紹承此生安暖。</p>
 
@@ -913,7 +950,7 @@
       </div>
 
       <div class="about-card">
-        <h2 class="couple-names">SHAO AN &amp; CHIUNG HSUAN</h2>
+        <h2 class="couple-names name-one-line">S.A &amp; C.H</h2>
 
         <p>
           從相遇到相守，我們將在溫柔的秋日午後，與最珍愛的親友們分享此生重要的約定。
@@ -1173,7 +1210,7 @@
   </main>
 
   <footer class="site-footer">
-    SHAO AN &amp; CHIUNG HSUAN · 2026.11.22
+    紹安SHAO AN &amp; 瓊萱CHIUNG HSUAN · 2026.11.22
   </footer>
 
   <script>
