@@ -223,15 +223,25 @@
     .hero h1 {
       margin: 0;
       font-family: "Cormorant Garamond", "Noto Serif TC", serif;
-      font-size: clamp(3rem, 10vw, 8.6rem);
       font-weight: 500;
-      line-height: 0.92;
-      letter-spacing: 0.03em;
       color: var(--ink);
       text-shadow: 0 12px 34px rgba(212, 163, 115, 0.14);
     }
 
-    .hero h1.name-one-line,
+    .hero h1.name-one-line {
+      width: 100%;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      white-space: nowrap;
+      overflow: visible;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: clamp(1rem, 4.2vw, 4.8rem);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
     .couple-names.name-one-line {
       white-space: nowrap;
       overflow-x: auto;
@@ -240,17 +250,8 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    .hero h1.name-one-line::-webkit-scrollbar,
     .couple-names.name-one-line::-webkit-scrollbar {
       display: none;
-    }
-
-    .hero h1.name-one-line {
-      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
-      font-size: clamp(1.45rem, 5.6vw, 5.8rem);
-      font-weight: 500;
-      line-height: 1.08;
-      letter-spacing: 0.02em;
     }
 
     .soul-line {
@@ -851,8 +852,8 @@
       }
 
       .hero h1.name-one-line {
-        font-size: clamp(1.16rem, 5.15vw, 1.65rem);
-        letter-spacing: 0.01em;
+        font-size: clamp(0.82rem, 3.95vw, 1.18rem);
+        letter-spacing: 0;
       }
 
       .couple-names.name-one-line {
