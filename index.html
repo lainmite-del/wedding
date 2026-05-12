@@ -1164,7 +1164,7 @@
           class="reply-form"
           id="replyForm"
           action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse"
-          method="POST"
+          method="GET"
           accept-charset="UTF-8"
           target="hidden_iframe"
           autocomplete="off"
@@ -1363,26 +1363,46 @@
     const replyForm = document.getElementById("replyForm");
     const formNotice = document.getElementById("formNotice");
     const hiddenIframe = document.getElementById("hidden_iframe");
-    let formSubmitted = false;
 
-    replyForm.addEventListener("submit", () => {
-      formSubmitted = true;
+    const googleFormResponseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse";
+
+    function appendField(params, name, value) {
+      if (!name || !name.startsWith("entry.")) return;
+      const trimmedValue = String(value || "").trim();
+      if (!trimmedValue) return;
+      params.append(name, trimmedValue);
+    }
+
+    replyForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!replyForm.reportValidity()) return;
+
+      const params = new URLSearchParams();
+      params.append("usp", "pp_url");
+      params.append("fvv", "1");
+      params.append("pageHistory", "0");
+
+      Array.from(replyForm.elements).forEach((field) => {
+        if (!field.name || field.disabled) return;
+        if (field.type === "radio" || field.type === "checkbox") {
+          if (field.checked) appendField(params, field.name, field.value);
+          return;
+        }
+        if (field.tagName === "BUTTON") return;
+        appendField(params, field.name, field.value);
+      });
+
+      const submitUrl = `${googleFormResponseUrl}?${params.toString()}`;
+      hiddenIframe.src = submitUrl;
+
       formNotice.textContent = "正在送出，請稍候。";
-      formNotice.dataset.submittedAt = String(Date.now());
       formNotice.classList.add("is-visible");
-    });
 
-    hiddenIframe.addEventListener("load", () => {
-      if (!formSubmitted) return;
-
-      const submittedAt = Number(formNotice.dataset.submittedAt || 0);
-      const waitedLongEnough = Date.now() - submittedAt > 400;
-
-      if (!waitedLongEnough) return;
-
-      formNotice.textContent = "表單已送出。若資料未出現在 Google 表單後台，請檢查該表單題目是否仍使用相同 entry ID、選項文字是否完全一致，以及表單是否限制登入或停止收件。";
-      replyForm.reset();
-      formSubmitted = false;
+      window.setTimeout(() => {
+        formNotice.textContent = "已送出回覆。請至 Google 表單後台重新整理確認；若仍未收到，代表 Google 表單可能已限制收件、要求登入，或題目選項文字與目前網頁不一致。";
+        replyForm.reset();
+      }, 1800);
     });
   </script>
 </body>
