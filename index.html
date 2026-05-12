@@ -722,6 +722,48 @@
       resize: vertical;
     }
 
+    .radio-group {
+      display: grid;
+      gap: 12px;
+      padding: 4px 0 2px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      color: var(--ink);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+    }
+
+    .radio-option input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      margin: 4px 0 0;
+      padding: 0;
+      border-radius: 50%;
+      accent-color: var(--sun);
+      cursor: pointer;
+      box-shadow: none;
+    }
+
+    .radio-option input[type="radio"]:focus {
+      box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.14);
+    }
+
+    .radio-option .option-text {
+      margin-left: 0;
+      font-family: "Noto Serif TC", serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+
     .submit-btn {
       width: 100%;
       border: 0;
@@ -892,6 +934,10 @@
       textarea {
         font-size: 16px;
       }
+
+      .radio-option .option-text {
+        font-size: 0.95rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1053,8 +1099,8 @@
               <strong>建議</strong>
               <span>
                 可選擇
-                <span class="no-wrap">米杏色</span>、
-                <span class="no-wrap">奶茶色</span>、
+                <span class="no-wrap">粉嫩霧紫色</span>、
+                <span class="no-wrap">米杏奶茶色</span>、
                 <span class="no-wrap">橄欖綠</span>、
                 <span class="no-wrap">柔霧大地色</span>
                 等溫柔色系。
@@ -1147,11 +1193,75 @@
             </div>
 
             <div class="field">
-              <label for="email">電子信箱 <span>EMAIL</span></label>
+              <label>是否需要喜帖 <span>INVITATION</span></label>
+
+              <div class="radio-group">
+                <label class="radio-option" for="inviteEmail">
+                  <input
+                    id="inviteEmail"
+                    name="entry.REPLACE_WITH_INVITATION_ID"
+                    type="radio"
+                    value="需要，請寄電子喜帖給我(請填Email)"
+                    required
+                  />
+                  <span class="option-text">需要，請寄電子喜帖給我(請填Email)</span>
+                </label>
+
+                <label class="radio-option" for="invitePaper">
+                  <input
+                    id="invitePaper"
+                    name="entry.REPLACE_WITH_INVITATION_ID"
+                    type="radio"
+                    value="需要，請寄紙本喜帖給我(請填寄送地址)"
+                    required
+                  />
+                  <span class="option-text">需要，請寄紙本喜帖給我(請填寄送地址)</span>
+                </label>
+
+                <label class="radio-option" for="inviteNone">
+                  <input
+                    id="inviteNone"
+                    name="entry.REPLACE_WITH_INVITATION_ID"
+                    type="radio"
+                    value="不用唷，婚禮相關資訊我知道了(請填連絡電話)"
+                    required
+                  />
+                  <span class="option-text">不用唷，婚禮相關資訊我知道了(請填連絡電話)</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="ecardEmail">電子喜帖寄送 Email <span>EMAIL</span></label>
+
+              <p class="field-note">
+                <span class="note-line">一起愛護地球，喜帖會在婚禮前一個月寄出</span>
+              </p>
+
               <input
-                id="email"
+                id="ecardEmail"
                 name="entry.2083343444"
                 type="email"
+                inputmode="email"
+              />
+            </div>
+
+            <div class="field">
+              <label for="paperAddress">紙本喜帖寄送地址 <span>ADDRESS</span></label>
+              <input
+                id="paperAddress"
+                name="entry.REPLACE_WITH_PAPER_ADDRESS_ID"
+                type="text"
+              />
+            </div>
+
+            <div class="field">
+              <label for="phone">您的聯絡電話 <span>PHONE</span></label>
+              <input
+                id="phone"
+                name="entry.REPLACE_WITH_PHONE_ID"
+                type="tel"
+                inputmode="tel"
               />
             </div>
 
@@ -1171,7 +1281,7 @@
 
               <p class="field-note" id="guestCountNote">
                 <span class="note-line">*人數總計記得包括自己喔</span>
-                <span class="note-line">*因桌數座位有限我們希望參加的你/妳都是能見證我們幸福的重要貴賓，目前暫不開放嬰幼兒隨行，如有需求請另外洽我們</span>
+                <span class="note-line">*因桌數座位有限我們希望參加的你/妳都是能見證我們幸福的重要貴賓，目前暫不開放幼兒孩童隨行，如有需求請另外洽詢我們喔，謝謝</span>
               </p>
 
               <input
