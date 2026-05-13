@@ -453,6 +453,7 @@
             const form = event.target;
             const submitBtn = document.getElementById('submit-btn');
 
+            // 檢查 HTML5 required 驗證
             if (!form.checkValidity()) {
                 return;
             }
