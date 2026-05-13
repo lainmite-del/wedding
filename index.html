@@ -454,7 +454,6 @@
             const submitBtn = document.getElementById('submit-btn');
 
             // 僅檢查 HTML5 必填欄位 (姓名、關係、喜帖需求、場次、人數)
-            // 非必填欄位 (Email, 地址, 電話, 祝福語) 不論是否有填值，都不會阻擋此處的驗證
             if (!form.checkValidity()) {
                 return;
             }
