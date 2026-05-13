@@ -372,20 +372,20 @@
                     </select>
                 </div>
 
-                <!-- Email (非必填) -->
+                <!-- Email (非必填: 留空即可，不需要預填) -->
                 <div>
                     <label class="form-label" for="email">電子喜帖寄送 EMAIL</label>
                     <input id="email" type="text" name="entry.63781421" class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="example@gmail.com">
                     <p class="form-hint">🍃 一起愛護地球，喜帖會在婚禮前一個月寄出</p>
                 </div>
 
-                <!-- 地址 (非必填) -->
+                <!-- 地址 (非必填: 留空即可，不需要預填) -->
                 <div>
                     <label class="form-label" for="address">紙本喜帖寄送地址 ADDRESS</label>
                     <input id="address" type="text" name="entry.942165567" class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="完整的寄送地址">
                 </div>
 
-                <!-- 電話 (非必填) -->
+                <!-- 電話 (非必填: 但建議填寫) -->
                 <div>
                     <label class="form-label" for="phone">您的聯絡電話 PHONE</label>
                     <input id="phone" type="text" name="entry.1825100098" class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="09XX-XXXXXX">
@@ -415,7 +415,7 @@
                     </div>
                 </div>
 
-                <!-- 祝福 (非必填) -->
+                <!-- 祝福 (非必填: 留空即可，不需要預填) -->
                 <div>
                     <label class="form-label" for="wishes">祝福的話 WISHES</label>
                     <textarea id="wishes" name="entry.380019799" rows="3" class="w-full border border-gray-100 rounded-2xl p-5 focus:border-[#d4a373] outline-none transition bg-gray-50/20 text-sm" placeholder="給新人的一段話..."></textarea>
@@ -453,7 +453,7 @@
             const form = event.target;
             const submitBtn = document.getElementById('submit-btn');
 
-            // 僅檢查 HTML5 必填欄位 (姓名、關係、喜帖需求、場次、人數)
+            // 僅檢查 HTML5 必填欄位
             if (!form.checkValidity()) {
                 return;
             }
