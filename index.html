@@ -300,8 +300,13 @@
                   action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse"
                   method="POST"
                   target="hidden_iframe"
-                  onsubmit="handleSubmit(event)"
+                  onsubmit="return handleSubmit(event)"
                   class="space-y-10 bg-white p-8 md:p-14 rounded-[2.5rem] shadow-sm border border-orange-50/50">
+
+                <!-- Google Forms 必要/相容欄位：提高自訂 HTML 表單送入後台的穩定性 -->
+                <input type="hidden" name="fvv" value="1">
+                <input type="hidden" name="pageHistory" value="0">
+                <input type="hidden" name="submit" value="Submit">
 
                 <!-- 必填 1 -->
                 <div>
@@ -424,30 +429,30 @@
             // 只檢查真正必填的欄位：姓名、關係、喜帖方式、場次、人數。
             // Email、地址、電話、祝福語皆維持非必填，不會阻擋送出。
             const requiredFields = [
-                'guest-name',
-                'relationship',
-                'invitation-type',
-                'attendance',
-                'guests'
+                { id: 'guest-name', label: '姓名' },
+                { id: 'relationship', label: '與新人關係' },
+                { id: 'invitation-type', label: '喜帖方式' },
+                { id: 'attendance', label: '出席場次' },
+                { id: 'guests', label: '出席人數' }
             ];
 
-            const firstInvalidField = requiredFields
-                .map(id => document.getElementById(id))
-                .find(field => !field.value || !field.value.trim());
+            // 先清除上一次的自訂錯誤，避免修正後仍被瀏覽器擋住。
+            requiredFields.forEach(({ id }) => {
+                const field = document.getElementById(id);
+                if (field) field.setCustomValidity('');
+            });
 
-            if (firstInvalidField) {
+            const firstInvalid = requiredFields.find(({ id }) => {
+                const field = document.getElementById(id);
+                return !field || !String(field.value || '').trim();
+            });
+
+            if (firstInvalid) {
                 event.preventDefault();
-                firstInvalidField.setCustomValidity('請填寫這個必填欄位');
-                firstInvalidField.reportValidity();
-                firstInvalidField.focus();
-                firstInvalidField.addEventListener('input', function clearMessage() {
-                    firstInvalidField.setCustomValidity('');
-                    firstInvalidField.removeEventListener('input', clearMessage);
-                });
-                firstInvalidField.addEventListener('change', function clearMessage() {
-                    firstInvalidField.setCustomValidity('');
-                    firstInvalidField.removeEventListener('change', clearMessage);
-                });
+                const field = document.getElementById(firstInvalid.id);
+                field.setCustomValidity(`請填寫${firstInvalid.label}`);
+                field.reportValidity();
+                field.focus();
                 return false;
             }
 
@@ -457,8 +462,8 @@
                 return false;
             }
 
-            // 走原本的 Google Forms hidden iframe 提交流程。
-            // 非必填欄位只要有填寫，就會依照各自的 entry.xxxxx name 一併送出。
+            // 重要：不要 preventDefault。讓瀏覽器用標準 POST 把所有 name="entry.xxxxx" 欄位送到 Google Forms。
+            // 非必填欄位即使空白也不會阻擋；有填寫的內容會一起送出。
             window.submitted = true;
             submitBtn.disabled = true;
             submitBtn.textContent = '送出中...';
