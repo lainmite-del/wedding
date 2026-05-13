@@ -294,7 +294,7 @@
                 <div class="w-12 h-[1px] bg-[#d4a373] mx-auto mt-8 opacity-40"></div>
             </div>
 
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) { showSuccess(); }"></iframe>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
             <form id="rsvp-form"
                   action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse"
@@ -308,12 +308,6 @@
                 <input type="hidden" name="pageHistory" value="0">
                 <input type="hidden" name="submit" value="Submit">
 
-
-
-                <!-- Google Forms 必要/相容欄位：提高自訂 HTML 表單送入後台的穩定性 -->
-                <input type="hidden" name="fvv" value="1">
-                <input type="hidden" name="pageHistory" value="0">
-                <input type="hidden" name="submit" value="Submit">
 
                 <!-- 必填 1 -->
                 <div>
@@ -428,7 +422,44 @@
             panel.classList.toggle('open');
             arrow.style.transform = panel.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
-        const weddingDate = new Date('2026-11-22T10:30:00+08:00').getTime();
+        
+
+        function handleSubmit(event) {
+            const form = event.target;
+            const submitBtn = document.getElementById('submit-btn');
+
+            // 1. 使用瀏覽器原生 required 驗證，未填必填欄位時跳出提醒且不送出。
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return false;
+            }
+
+            // 2. 驗證通過後，讓瀏覽器正常 POST 到 hidden_iframe。
+            // 不在這裡 preventDefault，也不立刻 disabled，避免干擾表單送出。
+            window.submitted = true;
+            submitBtn.textContent = '送出中...';
+
+            // 3. 給 Google Forms 一點時間接收資料，再顯示自訂成功畫面。
+            setTimeout(showSuccess, 1200);
+
+            return true;
+        }
+
+        function showSuccess() {
+            if (!window.submitted) return;
+
+            const form = document.getElementById('rsvp-form');
+            const successMsg = document.getElementById('success-msg');
+            const rsvpSection = document.getElementById('rsvp');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if (submitBtn) submitBtn.disabled = true;
+            form.classList.add('hidden');
+            successMsg.classList.remove('hidden');
+            window.scrollTo({ top: rsvpSection.offsetTop - 100, behavior: 'smooth' });
+        }
+
+const weddingDate = new Date('2026-11-22T10:30:00+08:00').getTime();
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
