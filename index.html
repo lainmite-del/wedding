@@ -100,12 +100,6 @@
             margin-bottom: 0.5rem;
             display: block;
         }
-        .form-hint {
-            font-size: 10px;
-            color: var(--sage-green);
-            margin-top: 0.75rem;
-            font-style: italic;
-        }
         @media (max-width: 640px) {
             .hero-section { background-position: center top; }
             .v-card { padding-left: 1.25rem; }
@@ -329,7 +323,7 @@
                     </select>
                 </div>
 
-                <!-- 必填 3 - 文字已 100% 精準對齊預填網址 -->
+                <!-- 必填 3 -->
                 <div>
                     <label class="form-label" for="invitation-type">是否需要喜帖 INVITATION</label>
                     <select id="invitation-type" name="entry.2083343444" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none bg-transparent">
@@ -344,7 +338,7 @@
                 <div>
                     <label class="form-label" for="email">電子喜帖寄送信箱 EMAIL</label>
                     <input id="email" type="text" name="entry.63781421" class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="example@gmail.com">
-                    <p class="form-hint">🍃 一起愛護地球，喜帖會在婚禮前一個月寄出</p>
+                    <p class="text-[10px] text-[#8da399] mt-3 italic">🍃 一起愛護地球，喜帖會在婚禮前一個月寄出</p>
                 </div>
 
                 <!-- 非必填 -->
@@ -359,7 +353,7 @@
                     <input id="phone" type="text" name="entry.1825100098" class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="09XX-XXXXXX">
                 </div>
 
-                <!-- 必填 4 - 文字已 100% 精準對齊預填網址 -->
+                <!-- 必填 4 -->
                 <div>
                     <label class="form-label" for="attendance">出席場次 ATTENDANCE</label>
                     <select id="attendance" name="entry.2026048812" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none bg-transparent">
@@ -375,11 +369,17 @@
                 <div>
                     <label class="form-label" for="guests">出席人數 GUESTS</label>
                     <input id="guests" type="text" name="entry.258761220" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="含您的總人數">
-                    <div class="mt-4 bg-[#fdfbf7] p-6 rounded-2xl border border-orange-50">
-                        <p class="text-[10px] text-gray-500 leading-relaxed space-y-1">
-                            <span>* 人數總計記得包括自己喔</span><br>
-                            <span>* 目前暫 <span class="font-bold text-[#d4a373]">【不開放幼兒孩童隨行】</span>，謝謝您的體諒。</span>
-                        </p>
+                    <div class="mt-4 bg-[#fdfbf7] p-6 rounded-2xl border border-orange-100/50">
+                        <div class="text-[10px] text-gray-500 leading-relaxed space-y-2">
+                            <p class="flex items-start"><span class="mr-2 text-[#d4a373]">•</span> <span>人數總計記得包括自己喔。</span></p>
+                            <p class="flex items-start text-gray-700 font-medium">
+                                <span class="mr-2 text-[#d4a373]">•</span> 
+                                <span>
+                                    因桌數座位有限，我們希望參加的你/妳都是能見證我們幸福的重要貴賓，<br class="hidden md:block">
+                                    <strong class="text-[#c44d4d] border-b border-[#c44d4d]/30 pb-0.5">目前暫不開放幼兒孩童隨行</strong>，如有需求請另外洽詢我們喔，謝謝。
+                                </span>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -421,19 +421,48 @@
             const form = event.target;
             const submitBtn = document.getElementById('submit-btn');
 
-            // 確保所有輸入值的首尾空白被清除，避免 Google 因格式錯誤拒絕
-            const inputs = form.querySelectorAll('input, select, textarea');
-            inputs.forEach(input => {
-                if(input.value) input.value = input.value.trim();
-            });
+            // 只檢查真正必填的欄位：姓名、關係、喜帖方式、場次、人數。
+            // Email、地址、電話、祝福語皆維持非必填，不會阻擋送出。
+            const requiredFields = [
+                'guest-name',
+                'relationship',
+                'invitation-type',
+                'attendance',
+                'guests'
+            ];
 
-            if (!form.checkValidity()) {
-                return;
+            const firstInvalidField = requiredFields
+                .map(id => document.getElementById(id))
+                .find(field => !field.value || !field.value.trim());
+
+            if (firstInvalidField) {
+                event.preventDefault();
+                firstInvalidField.setCustomValidity('請填寫這個必填欄位');
+                firstInvalidField.reportValidity();
+                firstInvalidField.focus();
+                firstInvalidField.addEventListener('input', function clearMessage() {
+                    firstInvalidField.setCustomValidity('');
+                    firstInvalidField.removeEventListener('input', clearMessage);
+                });
+                firstInvalidField.addEventListener('change', function clearMessage() {
+                    firstInvalidField.setCustomValidity('');
+                    firstInvalidField.removeEventListener('change', clearMessage);
+                });
+                return false;
             }
 
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                form.reportValidity();
+                return false;
+            }
+
+            // 走原本的 Google Forms hidden iframe 提交流程。
+            // 非必填欄位只要有填寫，就會依照各自的 entry.xxxxx name 一併送出。
             window.submitted = true;
             submitBtn.disabled = true;
             submitBtn.textContent = '送出中...';
+            return true;
         }
 
         function showSuccess() {
