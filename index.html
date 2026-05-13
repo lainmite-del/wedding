@@ -294,13 +294,9 @@
                 <div class="w-12 h-[1px] bg-[#d4a373] mx-auto mt-8 opacity-40"></div>
             </div>
 
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) { showSuccess(); }"></iframe>
-
             <form id="rsvp-form"
                   action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse"
                   method="POST"
-                  target="hidden_iframe"
-                  onsubmit="return handleSubmit(event)"
                   class="space-y-10 bg-white p-8 md:p-14 rounded-[2.5rem] shadow-sm border border-orange-50/50">
 
                 <!-- Google Forms 必要/相容欄位：提高自訂 HTML 表單送入後台的穩定性 -->
@@ -421,62 +417,6 @@
             panel.classList.toggle('open');
             arrow.style.transform = panel.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
-
-        function handleSubmit(event) {
-            const form = event.target;
-            const submitBtn = document.getElementById('submit-btn');
-
-            // 只檢查真正必填的欄位：姓名、關係、喜帖方式、場次、人數。
-            // Email、地址、電話、祝福語皆維持非必填，不會阻擋送出。
-            const requiredFields = [
-                { id: 'guest-name', label: '姓名' },
-                { id: 'relationship', label: '與新人關係' },
-                { id: 'invitation-type', label: '喜帖方式' },
-                { id: 'attendance', label: '出席場次' },
-                { id: 'guests', label: '出席人數' }
-            ];
-
-            // 先清除上一次的自訂錯誤，避免修正後仍被瀏覽器擋住。
-            requiredFields.forEach(({ id }) => {
-                const field = document.getElementById(id);
-                if (field) field.setCustomValidity('');
-            });
-
-            const firstInvalid = requiredFields.find(({ id }) => {
-                const field = document.getElementById(id);
-                return !field || !String(field.value || '').trim();
-            });
-
-            if (firstInvalid) {
-                event.preventDefault();
-                const field = document.getElementById(firstInvalid.id);
-                field.setCustomValidity(`請填寫${firstInvalid.label}`);
-                field.reportValidity();
-                field.focus();
-                return false;
-            }
-
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                form.reportValidity();
-                return false;
-            }
-
-            // 重要：不要 preventDefault。讓瀏覽器用標準 POST 把所有 name="entry.xxxxx" 欄位送到 Google Forms。
-            // 非必填欄位即使空白也不會阻擋；有填寫的內容會一起送出。
-            window.submitted = true;
-            submitBtn.disabled = true;
-            submitBtn.textContent = '送出中...';
-            return true;
-        }
-
-        function showSuccess() {
-            document.getElementById('rsvp-form').classList.add('hidden');
-            document.getElementById('success-msg').classList.remove('hidden');
-            const rsvpSection = document.getElementById('rsvp');
-            window.scrollTo({ top: rsvpSection.offsetTop - 100, behavior: 'smooth' });
-        }
-
         const weddingDate = new Date('2026-11-22T10:30:00+08:00').getTime();
         const timer = setInterval(function() {
             const now = new Date().getTime();
