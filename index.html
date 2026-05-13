@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
+
     <style>
         :root {
             --primary-gold: #d4a373;
@@ -30,7 +30,7 @@
         .font-serif-en {
             font-family: 'Cormorant Garamond', serif;
         }
-        
+
         .glass-nav {
             background: rgba(253, 251, 247, 0.85);
             backdrop-filter: blur(10px);
@@ -68,7 +68,7 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255,255,255,0.8);
         }
-        
+
         .timer-divider-inner {
             width: 1px;
             height: 25px;
@@ -116,7 +116,7 @@
             max-height: 1000px;
             transition: max-height 1s ease-in-out;
         }
-        
+
         .form-label {
             font-size: 0.75rem;
             letter-spacing: 0.12em;
@@ -143,6 +143,7 @@
             }
         }
     </style>
+
     <script>
         window.submitted = false;
     </script>
@@ -296,7 +297,7 @@
                 <p class="leading-relaxed text-gray-600 tracking-wide text-sm md:text-base mb-12">
                     <span class="no-wrap font-semibold text-[#8da399]">暖陽莫蘭迪</span>，為了讓當日的合照色彩更加的和諧優美，建議您可以選擇以下色系：
                 </p>
-                
+
                 <div class="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 mb-10">
                     <div class="flex flex-col items-center space-y-3">
                         <div class="w-16 h-16 rounded-full shadow-inner border-[3px] border-white" style="background-color: #D9A5B3;"></div>
@@ -332,9 +333,14 @@
             </div>
 
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) { showSuccess(); }"></iframe>
-            
-            <form id="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse?submit=Submit" method="POST" target="hidden_iframe" onsubmit="handleSubmit(event)" class="space-y-10 bg-white p-8 md:p-14 rounded-[2.5rem] shadow-sm border border-orange-50/50">
-                
+
+            <form id="rsvp-form"
+                  action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse?submit=Submit"
+                  method="POST"
+                  target="hidden_iframe"
+                  onsubmit="handleSubmit(event)"
+                  class="space-y-10 bg-white p-8 md:p-14 rounded-[2.5rem] shadow-sm border border-orange-50/50">
+
                 <input type="hidden" name="submit" value="Submit">
 
                 <div>
