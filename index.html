@@ -294,10 +294,21 @@
                 <div class="w-12 h-[1px] bg-[#d4a373] mx-auto mt-8 opacity-40"></div>
             </div>
 
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) { showSuccess(); }"></iframe>
+
             <form id="rsvp-form"
                   action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse"
                   method="POST"
+                  target="hidden_iframe"
+                  onsubmit="return handleSubmit(event)"
                   class="space-y-10 bg-white p-8 md:p-14 rounded-[2.5rem] shadow-sm border border-orange-50/50">
+
+                <!-- Google Forms 相容欄位 -->
+                <input type="hidden" name="fvv" value="1">
+                <input type="hidden" name="pageHistory" value="0">
+                <input type="hidden" name="submit" value="Submit">
+
+
 
                 <!-- Google Forms 必要/相容欄位：提高自訂 HTML 表單送入後台的穩定性 -->
                 <input type="hidden" name="fvv" value="1">
