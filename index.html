@@ -171,22 +171,22 @@
 
     <section class="py-24 px-6 max-w-5xl mx-auto">
         <div id="countdown" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <div class="timer-card animate__animated animate__fadeIn" style="animation-delay: 0.1s;">
+            <div class="timer-card">
                 <span id="days" class="text-3xl md:text-4xl font-serif-en font-light text-[#4a4a4a]">00</span>
                 <div class="timer-divider-inner"></div>
                 <span class="text-[9px] tracking-[0.2em] text-gray-400 uppercase font-bold">Days</span>
             </div>
-            <div class="timer-card animate__animated animate__fadeIn" style="animation-delay: 0.2s;">
+            <div class="timer-card">
                 <span id="hours" class="text-3xl md:text-4xl font-serif-en font-light text-[#4a4a4a]">00</span>
                 <div class="timer-divider-inner"></div>
                 <span class="text-[9px] tracking-[0.2em] text-gray-400 uppercase font-bold">Hrs</span>
             </div>
-            <div class="timer-card animate__animated animate__fadeIn" style="animation-delay: 0.3s;">
+            <div class="timer-card">
                 <span id="minutes" class="text-3xl md:text-4xl font-serif-en font-light text-[#4a4a4a]">00</span>
                 <div class="timer-divider-inner"></div>
                 <span class="text-[9px] tracking-[0.2em] text-gray-400 uppercase font-bold">Min</span>
             </div>
-            <div class="timer-card animate__animated animate__fadeIn" style="animation-delay: 0.4s;">
+            <div class="timer-card">
                 <span id="seconds" class="text-3xl md:text-4xl font-serif-en font-light text-[#4a4a4a]">00</span>
                 <div class="timer-divider-inner"></div>
                 <span class="text-[9px] tracking-[0.2em] text-gray-400 uppercase font-bold">Sec</span>
@@ -335,19 +335,19 @@
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) { showSuccess(); }"></iframe>
 
             <form id="rsvp-form"
-                  action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse?submit=Submit"
+                  action="https://docs.google.com/forms/d/e/1FAIpQLSdxK6sK-p8qmUzYl0MhB6ZFj0D9maeYUVyn04bUvHJs8GOZqw/formResponse"
                   method="POST"
                   target="hidden_iframe"
                   onsubmit="handleSubmit(event)"
                   class="space-y-10 bg-white p-8 md:p-14 rounded-[2.5rem] shadow-sm border border-orange-50/50">
 
-                <input type="hidden" name="submit" value="Submit">
-
+                <!-- 姓名 (必填) -->
                 <div>
                     <label class="form-label" for="guest-name">姓名 NAME</label>
                     <input id="guest-name" type="text" name="entry.85964274" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="您的姓名">
                 </div>
 
+                <!-- 與新人關係 (必填) -->
                 <div>
                     <label class="form-label" for="relationship">與新人關係 RELATIONSHIP</label>
                     <select id="relationship" name="entry.1703390441" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none bg-transparent">
@@ -361,6 +361,7 @@
                     </select>
                 </div>
 
+                <!-- 是否需要喜帖 (必填) -->
                 <div>
                     <label class="form-label" for="invitation-type">是否需要喜帖 INVITATION</label>
                     <select id="invitation-type" name="entry.2083343444" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none bg-transparent">
@@ -371,22 +372,26 @@
                     </select>
                 </div>
 
+                <!-- Email (非必填) -->
                 <div>
                     <label class="form-label" for="email">電子喜帖寄送 EMAIL</label>
                     <input id="email" type="email" name="entry.63781421" class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="example@gmail.com">
                     <p class="form-hint">🍃 一起愛護地球，喜帖會在婚禮前一個月寄出</p>
                 </div>
 
+                <!-- 地址 (非必填) -->
                 <div>
                     <label class="form-label" for="address">紙本喜帖寄送地址 ADDRESS</label>
                     <input id="address" type="text" name="entry.942165567" class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="完整的寄送地址">
                 </div>
 
+                <!-- 電話 (非必填) -->
                 <div>
                     <label class="form-label" for="phone">您的聯絡電話 PHONE</label>
                     <input id="phone" type="tel" name="entry.1825100098" class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="09XX-XXXXXX">
                 </div>
 
+                <!-- 出席場次 (必填) -->
                 <div>
                     <label class="form-label" for="attendance">出席場次 ATTENDANCE</label>
                     <select id="attendance" name="entry.2026048812" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none bg-transparent">
@@ -398,6 +403,7 @@
                     </select>
                 </div>
 
+                <!-- 人數 (必填) -->
                 <div>
                     <label class="form-label" for="guests">出席人數 GUESTS</label>
                     <input id="guests" type="number" name="entry.258761220" min="0" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="含您的總人數">
@@ -409,6 +415,7 @@
                     </div>
                 </div>
 
+                <!-- 祝福 (非必填) -->
                 <div>
                     <label class="form-label" for="wishes">祝福的話 WISHES</label>
                     <textarea id="wishes" name="entry.380019799" rows="3" class="w-full border border-gray-100 rounded-2xl p-5 focus:border-[#d4a373] outline-none transition bg-gray-50/20 text-sm" placeholder="給新人的一段話..."></textarea>
