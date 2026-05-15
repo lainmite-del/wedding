@@ -30,7 +30,7 @@
             border-bottom: 1px solid rgba(212, 163, 115, 0.1);
         }
         .hero-section {
-            background: url('https://i.postimg.cc/gk0Sn6S2/20260313-ARC-47-2.jpg');
+            background: url('https://i.postimg.cc/WpDN6JQn/20260313-ARC-47.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -305,13 +305,13 @@
 
                 <!-- 必填 1 -->
                 <div>
-                    <label class="form-label" for="guest-name">姓名 NAME</label>
+                    <label class="form-label" for="guest-name">姓名 NAME <span class="ml-2 text-[10px] text-[#c44d4d] tracking-[0.12em] font-semibold">必填</span></label>
                     <input id="guest-name" type="text" name="entry.85964274" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="您的姓名">
                 </div>
 
                 <!-- 必填 2 -->
                 <div>
-                    <label class="form-label" for="relationship">與新人關係 RELATIONSHIP</label>
+                    <label class="form-label" for="relationship">與新人關係 RELATIONSHIP <span class="ml-2 text-[10px] text-[#c44d4d] tracking-[0.12em] font-semibold">必填</span></label>
                     <select id="relationship" name="entry.1703390441" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none bg-transparent">
                         <option value="" disabled selected>請選擇關係</option>
                         <option value="男方家人親戚">男方家人親戚</option>
@@ -325,7 +325,7 @@
 
                 <!-- 必填 3 -->
                 <div>
-                    <label class="form-label" for="invitation-type">是否需要喜帖 INVITATION</label>
+                    <label class="form-label" for="invitation-type">是否需要喜帖 INVITATION <span class="ml-2 text-[10px] text-[#c44d4d] tracking-[0.12em] font-semibold">必填</span></label>
                     <select id="invitation-type" name="entry.2083343444" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none bg-transparent">
                         <option value="" disabled selected>請選擇寄送方式</option>
                         <option value="需要，請寄電子喜帖給我(請填Email)">需要，請寄電子喜帖給我(請填Email)</option>
@@ -355,7 +355,7 @@
 
                 <!-- 必填 4 -->
                 <div>
-                    <label class="form-label" for="attendance">出席場次 ATTENDANCE</label>
+                    <label class="form-label" for="attendance">出席場次 ATTENDANCE <span class="ml-2 text-[10px] text-[#c44d4d] tracking-[0.12em] font-semibold">必填</span></label>
                     <select id="attendance" name="entry.2026048812" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none bg-transparent">
                         <option value="" disabled selected>請選擇出席場次</option>
                         <option value="證婚儀式與婚禮午宴皆出席">證婚儀式與婚禮午宴皆出席</option>
@@ -367,7 +367,7 @@
 
                 <!-- 必填 5 -->
                 <div>
-                    <label class="form-label" for="guests">出席人數 GUESTS</label>
+                    <label class="form-label" for="guests">出席人數 GUESTS <span class="ml-2 text-[10px] text-[#c44d4d] tracking-[0.12em] font-semibold">必填</span></label>
                     <input id="guests" type="text" name="entry.258761220" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="含您的總人數">
                     <div class="mt-4 bg-[#fdfbf7] p-6 rounded-2xl border border-orange-100/50">
                         <div class="text-[10px] text-gray-500 leading-relaxed space-y-2">
@@ -381,6 +381,13 @@
                             </p>
                         </div>
                     </div>
+                </div>
+
+                <!-- 非必填：吃素人數 -->
+                <div>
+                    <label class="form-label" for="vegetarian-guests">共幾位吃素 VEGETARIAN <span class="ml-2 text-[10px] text-[#c44d4d] tracking-[0.12em] font-semibold">必填</span></label>
+                    <input id="vegetarian-guests" type="text" name="entry.1003278653" required class="w-full border-b border-gray-100 py-3 focus:border-[#d4a373] outline-none transition bg-transparent" placeholder="例如：0 位 / 1 位 / 2 位">
+                    <p class="text-[10px] text-[#8da399] mt-3 italic">請一併考量同行親友。</p>
                 </div>
 
                 <!-- 非必填 -->
